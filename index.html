@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Beni organize et</title>
+    <h1>Beni organize et
+    </h1>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" id="menu-button">Finans</a></li>
+                <li><a href="#" id="mainBtn">Market + Diş malzeme</a></li>
+                <li><a href="#" id="goals-button">Hedefler</a></li>
+                <li><a href="#" id="showTodoButton">to do list</a></li>
+                <li><a href="#" id="calendar-button">Etkinlikler</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+    <div id="finance-section">
+        <h2>Bugün için ne kadar paraya sahip olmak istersiniz?</h2>
+        <input type="number" id="daily-money-input">
+        <div id="money-display">
+            <p>Günlük Para: ₺<span id="daily-money">0</span></p>
+        </div>
+        <div id="money-operations">
+            <input type="number" id="money-operation-input">
+            <button id="add-money">ekleme</button>
+            <button id="subtract-money">çıkarma</button>
+        </div>
+        <button id="back-button">Geri</button>
+    </div>
+
+    <div id="menu">
+       
+    </div>
+    <div id="todoListPage" class="hidden">
+        <button id="backButton">Geri</button>
+        <div id="calendar">
+            <input type="date" id="todoDate">
+        </div>
+        <button id="addTaskButton">Ekle</button>
+        <div id="taskList">
+            
+        </div>
+    </div>
+
+    
+
+    <div class="content" id="mainPage">
+        <h2></h2>
+    </div>
+
+    <div class="content" id="groceriesPage" style="display: none;">
+        <h2>Market alışveriş</h2>
+        <input type="text" id="groceryInput" placeholder="Bir market ürünü girin">
+        <button id="addGrocery">Ekle</button>
+        <ul id="groceryList"></ul>
+    </div>
+
+    <div class="content" id="dentalPage" style="display: none;">
+        <h2>Diş Malzemeleri</h2>
+        <input type="text" id="dentalInput" placeholder="Bir diş malzemesi girin">
+        <button id="addDental">Ekle</button>
+        <ul id="dentalList"></ul>
+    </div>
+
+    <button id="backBtn" style="display: none;">Geri</button>
+
+    <div id="menu-page">
+        
+    </div>
+    <div id="goals-page" style="display: none;">
+        <button class="goal-box" data-goal="weekly">Haftalık Hedefler</button>
+        <button class="goal-box" data-goal="monthly">Aylık Hedefler</button>
+        <button class="goal-box" data-goal="3-month">3 Aylık Hedefler</button>
+        <button class="goal-box" data-goal="6-month">6 Aylık Hedefler</button>
+        <button class="goal-box" data-goal="9-month">9 Aylık Hedefler</button>
+        <button class="goal-box" data-goal="1-year">1 Yıl Hedefleri</button>
+        <button class="goal-box" data-goal="3-year">3 Yıl Hedefleri</button>
+        <button class="back-button">Geri</button>
+    </div>
+    <div id="goal-details-page" style="display: none;">
+        <input type="text" id="goal-input" placeholder="Bir hedef girin">
+        <button id="add-button">Ekle</button>
+        <ul id="goal-list"></ul>
+        <button class="back-button">Geri</button>
+    </div>
+
+   
+    <div id="calendar-page" style="display: none;">
+        <div class="calendar">
+            
+            <div class="day">
+                <button class="add-button">1.Pazartesi</button>
+                <ul class="events"></ul>
+            </div>
+            <div class="day">
+                <button class="add-button">2.Salı</button>
+                <ul class="events"></ul>
+            </div>
+            <div class="day">
+                <button class="add-button">3.Çarşamba</button>
+                <ul class="events"></ul>
+            </div>
+            <div class="day">
+                <button class="add-button">4.Perşembe</button>
+                <ul class="events"></ul>
+            </div>
+            <div class="day">
+                <button class="add-button">5.Cuma</button>
+                <ul class="events"></ul>
+            </div>
+            <div class="day">
+                <button class="add-button">6.Cumartesi</button>
+                <ul class="events"></ul>
+            </div>
+            <div class="day">
+                <button class="add-button">7.Pazar</button>
+                <ul class="events"></ul>
+            </div>
+        </div>
+        <button id="calendar-back-button">Geri</button>
+    </div>
+    
+
+
+    <script src="script.js"></script>
+    <script src="js2.js"></script>
+    <script src="goals.js"></script>
+
+    <script src="js4.js"></script>
+
+    <script>
+        // Grocery and Dental
+        document.getElementById("mainBtn").addEventListener("click", function() {
+            document.getElementById("mainPage").style.display = "none";
+            document.getElementById("groceriesPage").style.display = "block";
+            document.getElementById("dentalPage").style.display = "block";
+            document.getElementById("mainBtn").style.display = "none";
+            document.getElementById("backBtn").style.display = "block";
+        });
+        
+        document.getElementById("backBtn").addEventListener("click", function() {
+            document.getElementById("mainPage").style.display = "block";
+            document.getElementById("groceriesPage").style.display = "none";
+            document.getElementById("dentalPage").style.display = "none";
+            document.getElementById("mainBtn").style.display = "block";
+            document.getElementById("backBtn").style.display = "none";
+        });
+        
+        // Goals
+        document.getElementById("goals-button").addEventListener("click", function() {
+    document.getElementById("menu-page").style.display = "none";
+    document.getElementById("goals-page").style.display = "block";
+});
+
+        const goalBoxes = document.querySelectorAll(".goal-box");
+        const backButton = document.querySelectorAll(".back-button");
+        const goalDetailsPage = document.getElementById("goal-details-page");
+        const goalInput = document.getElementById("goal-input");
+        const addButton = document.getElementById("add-button");
+        const goalList = document.getElementById("goal-list");
+
+        goalBoxes.forEach(function(box) {
+            box.addEventListener("click", function() {
+                goalsPage.style.display = "none";
+                goalDetailsPage.style.display = "block";
+                
+            });
+        });
+
+        backButton.forEach(function(button) {
+            button.addEventListener("click", function() {
+                if (goalDetailsPage.style.display === "block") {
+                    goalsPage.style.display = "block";
+                    goalDetailsPage.style.display = "none";
+                } else {
+                    menuPage.style.display = "block";
+                    goalsPage.style.display = "none";
+                    goalDetailsPage.style.display = "none";
+                }
+            });
+        });
+
+        addButton.addEventListener("click", function() {
+            const goalText = goalInput.value;
+            if (goalText) {
+                const goalItem = document.createElement("li");
+                goalItem.textContent = goalText;
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Sil";
+                deleteButton.addEventListener("click", function() {
+                    goalItem.remove();
+                });
+                goalItem.appendChild(deleteButton);
+                goalList.appendChild(goalItem);
+                goalInput.value = "";
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>
